@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">CarStuff</string>
+    <string name="Add_vehicle">Add vehicle</string>
+    <string name="welcome">Welcome to CarStuff!</string>
+    <string name="details">Details</string>
+    <string name="addExpense">Add expense</string>
+    <string name="add_gps">Add GPS</string>
+    <string name="add_ins_mot">Add insurance or MOT</string>
+    <string name="carMake">Make</string>
+    <string name="carPrice">Price</string>
+    <string name="carYear">Year of manufacture</string>
+    <string name="carModel">Model</string>
+    <string name="insuranceDate">Insurance expiry date</string>
+    <string name="MOTend">MOT expiry date</string>
+    <string name="addCar">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="back">Back</string>
+    <string name="price">Price:</string>
+    <string name="year1">Year of manufacture:</string>
+    <string name="delete">Delete car</string>
+    <string name="getGPS">GPS locate</string>
+    <string name="endMOT">MOT ending date:</string>
+    <string name="endInsurance">Insurance end date</string>
+    <string name="addmot">Add MOT</string>
+    <string name="addins">Add Insurance</string>
+    <string name="a" />
+    <string name="savelocation">Save location</string>
+    <string name="important">"IMPORTANT! There is a car whose MOT/Insurance expires soon:  "</string>
+    <string name="addImage">ADD IMAGE</string>
+    <string name="amountmoney">Enter the expense amount</string>
+    <string name="expenseText">Enter the reason of the expense</string>
+</resources>

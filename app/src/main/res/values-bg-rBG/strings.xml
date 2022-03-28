@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CarStuff</string>
+    <string name="Add_vehicle">Добави</string>
+    <string name="welcome">Добре дошли в CarStuff!</string>
+    <string name="details">Детайли</string>
+    <string name="addExpense">Добави разход</string>
+    <string name="add_gps">Добави GPS</string>
+    <string name="add_ins_mot">Добави застраховка или MOT</string>
+    <string name="carMake">Марка</string>
+    <string name="carPrice">Цена</string>
+    <string name="carYear">Година на производство</string>
+    <string name="carModel">Модел</string>
+    <string name="insuranceDate">Изтичаща гражданска дата</string>
+    <string name="MOTend">Изтичащ преглед дата</string>
+    <string name="addCar">Добави</string>
+    <string name="cancel">Откажи</string>
+    <string name="back">Назад</string>
+    <string name="price">Цена:</string>
+    <string name="year1">Година на производство:</string>
+    <string name="delete">Изтрий кола</string>
+    <string name="getGPS">Локирай</string>
+    <string name="endMOT">Техн преглед:</string>
+    <string name="endInsurance">Застраховка:</string>
+    <string name="addmot">Добави преглед</string>
+    <string name="addins">Добави застраховка</string>
+    <string name="a" />
+    <string name="savelocation">Запази локация</string>
+    <string name="important">"Внимание! Има автомобил с изтичащ срок:  "</string>
+</resources>
