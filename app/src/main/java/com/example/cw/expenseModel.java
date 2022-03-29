@@ -44,6 +44,14 @@ public class expenseModel {
 
     public String Expense;
     public String Note;
+
+    @Override
+    public String toString() {
+        return
+                " £" + Car_ID +
+                " Note: " + Expense ;
+    }
+
     public int Car_ID;
 
 }

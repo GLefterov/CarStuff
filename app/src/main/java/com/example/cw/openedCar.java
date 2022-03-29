@@ -34,9 +34,12 @@ import com.squareup.picasso.Picasso;
 import android.view.View;
 
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -98,6 +101,9 @@ public class openedCar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opened_car);
 
+
+
+
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if(ContextCompat.checkSelfPermission(openedCar.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(openedCar.this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
@@ -148,7 +154,9 @@ public class openedCar extends AppCompatActivity {
         TextView tv_location = findViewById(R.id.tv_location);
         TextView tv_addexpense = findViewById(R.id.tv_expense);
         ImageView imgCar =  findViewById(R.id.iv_car);
+        ListView lv_expense = findViewById(R.id.lv_expenses);
 
+        ShowExpensesOnListView(dataBaseHelper, currentCar, lv_expense);
 
         tv_carMake.setText(currentCar.Make);
         tv_carModel.setText(currentCar.Model);
@@ -165,7 +173,8 @@ public class openedCar extends AppCompatActivity {
 //        Toast.makeText(this, "CREATED! "+Result, Toast.LENGTH_SHORT).show();
 //        String imgPathPlus = imgPath + ".jpg";
 //        imgCar.setVisibility(View.VISIBLE);
-        Picasso.get().load(imgPath).into(imgCar);
+      //  Picasso.get().load(imgPath).into(imgCar);
+        imgCar.setImageURI(Uri.parse(imgPath));
 
 
 
@@ -179,7 +188,11 @@ public class openedCar extends AppCompatActivity {
 
 
 
+        List <expenseModel> allExpenses = dataBaseHelper.selectAllExpenses(currentCar.getId());
+        ArrayAdapter expenseModelArrayAdapter = new ArrayAdapter<expenseModel>(openedCar.this, android.R.layout.simple_list_item_1, allExpenses);
+        lv_expense.setAdapter(expenseModelArrayAdapter);
 
+      //  Toast.makeText(openedCar.this, ""+allExpenses.toString(), Toast.LENGTH_SHORT).show();
 
 
 
@@ -191,6 +204,7 @@ public class openedCar extends AppCompatActivity {
         floatingAddInsurance = findViewById(R.id.floatingAddInsurance);
         floatingActionButton = findViewById(R.id.floatingActionButton);
         floatingAddMOT = findViewById(R.id.floatingAddMOT);
+
 
 
         from_bottom_anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_bottom_anim);
@@ -252,9 +266,15 @@ public class openedCar extends AppCompatActivity {
                     isOpen = true;
                 }
 
+
+
+
+
+
+
             }
 
-            ;
+
 
         });
         floatingAddMOT.setOnClickListener(new View.OnClickListener() {
@@ -403,8 +423,27 @@ public class openedCar extends AppCompatActivity {
                 }
             }
         });
+        lv_expense.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                expenseModel expenseModel2 = (expenseModel) parent.getItemAtPosition(position);
+                int carIDD = expenseModel2.getExpense_id();
+                boolean done = dataBaseHelper.deleteExpense(carIDD);
+                ShowExpensesOnListView(dataBaseHelper, currentCar, lv_expense);
+
+
+            }
+        });
+
 
 
     }
+
+    private void ShowExpensesOnListView(DataBaseHelper dataBaseHelper, classCarModel currentCar, ListView lv_expense) {
+        ArrayAdapter<expenseModel> expenseModelArrayAdapter = new ArrayAdapter<expenseModel>(openedCar.this, android.R.layout.simple_list_item_1, dataBaseHelper.selectAllExpenses(currentCar.getId()));
+        lv_expense.setAdapter(expenseModelArrayAdapter);
+    }
+
+
 
 }

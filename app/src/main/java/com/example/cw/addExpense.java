@@ -17,7 +17,9 @@ public class addExpense extends AppCompatActivity {
         setContentView(R.layout.activity_add_expense);
         EditText expenseAmount, expenseReason;
 
+
         Button btnAdd = findViewById(R.id.btn_addExpense);
+        Button back2 = findViewById(R.id.btn_back2);
         expenseReason = findViewById(R.id.editTextTextPersonName2);
         expenseAmount = findViewById(R.id.editTextTextPersonName);
 
@@ -57,6 +59,18 @@ public class addExpense extends AppCompatActivity {
 
                 Toast.makeText(addExpense.this, "Success= " + success, Toast.LENGTH_SHORT).show();
 
+            }
+
+
+
+        });
+
+        back2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(addExpense.this, openedCar.class);
+                intent.putExtra("passId", Search);
+                startActivity(intent);
             }
         });
     }

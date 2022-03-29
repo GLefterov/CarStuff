@@ -58,12 +58,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean deleteExpense(int ID){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "DELETE FROM " + EXPENSE_TABLE + " WHERE " + EXPENSE_ID + " = " + ID;
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if(cursor.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
 
     public boolean deleteOne(int ID){
         //find carModel in the database. if its found delete it and return true, if not -> return false
         SQLiteDatabase db = this.getWritableDatabase();
         String queryString = "DELETE FROM " + CAR_TABLE + " WHERE " + COLUMN_ID + " = " + ID;
+        SQLiteDatabase db2 = this.getWritableDatabase();
+        String queryString2 = "DELETE FROM " + EXPENSE_TABLE + " WHERE " + CAR_ID + " = " + ID;
         Cursor cursor = db.rawQuery(queryString, null);
 
         if(cursor.moveToFirst()){
@@ -90,12 +104,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public List<expenseModel> selectAllExpenses(){
+    public List<expenseModel> selectAllExpenses(int carID){
         List<expenseModel> returnList = new ArrayList<>();
-
-        //get data from the database
-        String queryString = "SELECT * FROM " + EXPENSE_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
+        //get data from the database
+        String queryString = "SELECT * FROM " + EXPENSE_TABLE + " WHERE " + CAR_ID + " = " + carID;
+
 
         Cursor cursor = db.rawQuery(queryString, null);
 

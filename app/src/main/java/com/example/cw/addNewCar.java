@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
@@ -107,15 +108,26 @@ btnImage = findViewById(R.id.btn_addImage);
         });
     }
 
+    public String getRealPathFromURI(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+
         if(resultCode == RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
             selImage = selectedImage;
-            carPic.setImageURI(selectedImage);
-            Toast.makeText(this, ""+selectedImage, Toast.LENGTH_SHORT).show();
+            File finalFile = new File(getRealPathFromURI(selectedImage));
+            carPic.setImageURI(selImage);
+
+            Toast.makeText(this, ""+Uri.fromFile(finalFile), Toast.LENGTH_SHORT).show();
         }
     }
 }
