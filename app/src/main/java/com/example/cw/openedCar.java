@@ -47,7 +47,7 @@ import java.util.List;
 
 public class openedCar extends AppCompatActivity {
     Animation from_bottom_anim, to_bottom_anim, rotate_close_anim, rotate_open_anim;
-    public FloatingActionButton floatingAddExpense, floatingAddGPS, floatingAddInsurance, floatingActionButton, floatingAddMOT;
+    public FloatingActionButton floatingAddExpense, floatingAddGPS, floatingAddInsurance, floatingActionButton, floatingAddMOT, floatingActionButton2;
     Button btn_delCar, btn_getGPS;
     ImageView imgCar;
     TextView tv_location, tv_fabmot, tv_fabins, tv_expense;
@@ -141,7 +141,7 @@ public class openedCar extends AppCompatActivity {
         DataBaseHelper dataBaseHelper = new DataBaseHelper(openedCar.this);
 
         classCarModel currentCar = dataBaseHelper.searchOne(Search);
-        Toast.makeText(openedCar.this, ""+currentCar.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, ""+currentCar, Toast.LENGTH_SHORT).show();
 
 
         TextView tv_carMake = findViewById(R.id.tv_carMake);
@@ -157,7 +157,7 @@ public class openedCar extends AppCompatActivity {
         ImageView imgCar =  findViewById(R.id.iv_car);
         ListView lv_expense = findViewById(R.id.lv_expenses);
 
-        ShowExpensesOnListView(dataBaseHelper, currentCar, lv_expense);
+        //ShowExpensesOnListView(dataBaseHelper, currentCar, lv_expense);
 
         tv_carMake.setText(currentCar.Make);
         tv_carModel.setText(currentCar.Model);
@@ -205,6 +205,7 @@ public class openedCar extends AppCompatActivity {
         floatingAddInsurance = findViewById(R.id.floatingAddInsurance);
         floatingActionButton = findViewById(R.id.floatingActionButton);
         floatingAddMOT = findViewById(R.id.floatingAddMOT);
+        floatingActionButton2 = findViewById(R.id.floatingActionButton2);
 
 
 
@@ -221,6 +222,7 @@ public class openedCar extends AppCompatActivity {
                     floatingAddGPS.startAnimation(to_bottom_anim);
                     floatingAddInsurance.startAnimation(to_bottom_anim);
                     floatingAddMOT.startAnimation(to_bottom_anim);
+                    floatingActionButton2.startAnimation(to_bottom_anim);
                     floatingActionButton.startAnimation(rotate_close_anim);
                     tv_fabins.startAnimation(to_bottom_anim);
                     tv_fabmot.startAnimation(to_bottom_anim);
@@ -232,6 +234,7 @@ public class openedCar extends AppCompatActivity {
                     floatingAddGPS.setClickable(false);
                     floatingAddInsurance.setClickable(false);
                     floatingAddMOT.setClickable(false);
+                    floatingActionButton2.setClickable(false);
 
                     isOpen = false;
 
@@ -239,6 +242,7 @@ public class openedCar extends AppCompatActivity {
                     floatingAddExpense.startAnimation(from_bottom_anim);
                     floatingAddGPS.startAnimation(from_bottom_anim);
                     floatingAddInsurance.startAnimation(from_bottom_anim);
+                    floatingActionButton2.startAnimation(from_bottom_anim);
                     floatingAddMOT.startAnimation(from_bottom_anim);
                     tv_fabins.startAnimation(from_bottom_anim);
                     tv_fabmot.startAnimation(from_bottom_anim);
@@ -249,6 +253,7 @@ public class openedCar extends AppCompatActivity {
 
 
                     floatingAddExpense.setClickable(true);
+                    floatingActionButton2.setClickable(true);
                     floatingAddGPS.setClickable(true);
                     floatingAddInsurance.setClickable(true);
                     floatingAddMOT.setClickable(true);
@@ -256,6 +261,7 @@ public class openedCar extends AppCompatActivity {
 
                     floatingAddExpense.setVisibility(View.VISIBLE);
                     floatingAddGPS.setVisibility(View.VISIBLE);
+                    floatingActionButton2.setVisibility(View.VISIBLE);
                     floatingAddInsurance.setVisibility(View.VISIBLE);
                     floatingAddMOT.setVisibility(View.VISIBLE);
                     tv_fabins.setVisibility(View.VISIBLE);
@@ -267,16 +273,7 @@ public class openedCar extends AppCompatActivity {
                     isOpen = true;
                 }
 
-
-
-
-
-
-
             }
-
-
-
         });
         floatingAddMOT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -375,9 +372,9 @@ public class openedCar extends AppCompatActivity {
 
             }
         });
-        btn_delCar.setOnClickListener(new View.OnClickListener(){
+        floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -395,10 +392,16 @@ public class openedCar extends AppCompatActivity {
                         }
                     }
                 };
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
                         .setNegativeButton("No", dialogClickListener).show();
+            }
+        });
+        btn_delCar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(openedCar.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 

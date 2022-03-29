@@ -109,19 +109,32 @@
         app:layout_constraintBottom_toBottomOf="@+id/floatingAddGPS"
         app:layout_constraintEnd_toStartOf="@+id/floatingAddGPS" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/floatingAddMOT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_delete_24" />
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="409dp"
         android:layout_height="650dp"
         app:cardBackgroundColor="#EFEFEF"
         app:layout_constraintBottom_toTopOf="@+id/floatingAddMOT"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_car"
 
+        app:layout_constraintTop_toBottomOf="@+id/iv_car"
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="450dp">
 
 
             <TextView
@@ -131,9 +144,9 @@
                 android:layout_marginStart="36dp"
                 android:layout_marginTop="16dp"
                 android:text="TextView"
-                android:textStyle="bold"
                 android:textColor="#000000"
                 android:textSize="24sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -178,8 +191,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="12dp"
-                android:textSize="16sp"
                 android:text="@string/carPrice"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView7"
                 tools:text="@string/price" />
@@ -190,8 +203,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="12dp"
-                android:textSize="16sp"
                 android:text="@string/carYear"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_carMake"
                 tools:text="@string/year1" />
@@ -202,8 +215,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="12dp"
-                android:textSize="16sp"
                 android:text="@string/endMOT"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -222,10 +235,10 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="12dp"
                 android:text="@string/insuranceDate"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -244,10 +257,11 @@
                 android:id="@+id/lv_expenses"
                 android:layout_width="239dp"
                 android:layout_height="250dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginBottom="212dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

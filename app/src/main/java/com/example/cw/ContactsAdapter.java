@@ -22,6 +22,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         TextView rowId;
         TextView rowName;
         TextView rowEmail;
+        TextView viewID;
         ImageView imgView;
 
         public ViewHolder(@NonNull View itemView) {
@@ -30,6 +31,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             rowName = itemView.findViewById(R.id.item_name);
             rowEmail = itemView.findViewById(R.id.item_email);
             imgView = itemView.findViewById(R.id.imageView);
+            viewID = itemView.findViewById(R.id.tv_ID);
         }
     }
 
@@ -56,6 +58,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         viewHolder.rowId.setText(Integer.toString(contact.getYear()));
         viewHolder.rowName.setText(contact.getMake());
         viewHolder.rowEmail.setText(contact.getModel());
+        viewHolder.viewID.setText(Integer.toString(contact.getId()));
     }
 
     @Override

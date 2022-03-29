@@ -147,10 +147,12 @@ public class MainActivity extends AppCompatActivity {
                 new RecyclerItemClickListener(MainActivity.this, rvPrograms ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
 
+                        Integer id = allCars.get(position).getId();
+                        Toast.makeText(MainActivity.this, ""+id, Toast.LENGTH_SHORT).show();
                         Intent openedCar = new Intent(MainActivity.this, openedCar.class);
                         position++;
-                        Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
-                        openedCar.putExtra("passId", position);
+                        //Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+                        openedCar.putExtra("passId", id);
                         startActivity(openedCar);
                     }
 
