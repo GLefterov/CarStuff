@@ -20,7 +20,7 @@
     <string name="delete">Delete car</string>
     <string name="getGPS">GPS locate</string>
     <string name="endMOT">MOT ending date:</string>
-    <string name="endInsurance">Insurance end date</string>
+    <string name="endInsurance">Insurance end date:</string>
     <string name="addmot">Add MOT</string>
     <string name="addins">Add Insurance</string>
     <string name="a" />

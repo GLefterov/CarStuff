@@ -141,6 +141,7 @@ public class openedCar extends AppCompatActivity {
         DataBaseHelper dataBaseHelper = new DataBaseHelper(openedCar.this);
 
         classCarModel currentCar = dataBaseHelper.searchOne(Search);
+        Toast.makeText(openedCar.this, ""+currentCar.toString(), Toast.LENGTH_SHORT).show();
 
 
         TextView tv_carMake = findViewById(R.id.tv_carMake);
@@ -188,7 +189,7 @@ public class openedCar extends AppCompatActivity {
 
 
 
-        List <expenseModel> allExpenses = dataBaseHelper.selectAllExpenses(currentCar.getId());
+        List <expenseModel> allExpenses = dataBaseHelper.selectAllExpenses(Search);
         ArrayAdapter expenseModelArrayAdapter = new ArrayAdapter<expenseModel>(openedCar.this, android.R.layout.simple_list_item_1, allExpenses);
         lv_expense.setAdapter(expenseModelArrayAdapter);
 

@@ -11,12 +11,15 @@ import android.location.LocationManager;
 import android.os.Bundle;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.CountDownTimer;
 import android.provider.ContactsContract;
@@ -37,12 +40,21 @@ public class MainActivity extends AppCompatActivity {
     TextView important, tv_carimportant;
     Button button;
 
+    RecyclerView rvPrograms;
+    ContactsAdapter contactsAdapter;
+    RecyclerView.LayoutManager layoutManager;
+    List<classCarModel> contactsList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         important = findViewById(R.id.textView3);
         tv_carimportant = findViewById(R.id.tv_carimportant);
+
+
+
 
 
 
@@ -59,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
         //database contact and get info
         DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
         List<classCarModel> allCars = dataBaseHelper.selectAll();
+
+        rvPrograms = findViewById(R.id.rvPrograms);
+        rvPrograms.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(MainActivity.this);
+        rvPrograms.setLayoutManager(layoutManager);
+        contactsAdapter = new ContactsAdapter(MainActivity.this, allCars, rvPrograms);
+        rvPrograms.setAdapter(contactsAdapter);
 
 
         //SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
@@ -105,10 +124,10 @@ public class MainActivity extends AppCompatActivity {
             }
             }
        //Toast.makeText(MainActivity.this, allCars.toString(), Toast.LENGTH_SHORT).show();
-
-        ArrayAdapter carArrayAdapter = new ArrayAdapter<classCarModel>(MainActivity.this, android.R.layout.simple_list_item_1, allCars);
-        ListView list = (ListView) findViewById(R.id.carListView);
-        list.setAdapter(carArrayAdapter);
+//
+//        ArrayAdapter carArrayAdapter = new ArrayAdapter<classCarModel>(MainActivity.this, android.R.layout.simple_list_item_1, allCars);
+//        ListView list = (ListView) findViewById(R.id.carListView);
+//        list.setAdapter(carArrayAdapter);
 
         //AdapterView.OnItemClickListener onItemClickListener = ;
 
@@ -124,20 +143,36 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        rvPrograms.addOnItemTouchListener(
+                new RecyclerItemClickListener(MainActivity.this, rvPrograms ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+
+                        Intent openedCar = new Intent(MainActivity.this, openedCar.class);
+                        position++;
+                        Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+                        openedCar.putExtra("passId", position);
+                        startActivity(openedCar);
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
 
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-             classCarModel clickedCar = (classCarModel) parent.getItemAtPosition(position);
-             int carIDD = clickedCar.getId();
-             String passInfo = Integer.toString(carIDD);
-             Intent openedCar = new Intent(MainActivity.this, openedCar.class);
-             //Toast.makeText(MainActivity.this, "" + passInfo, Toast.LENGTH_SHORT).show();
-             openedCar.putExtra("passId", passInfo);
-             startActivity(openedCar);
-            }
-        });
+//        rvPrograms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//             classCarModel clickedCar = (classCarModel) parent.getItemAtPosition(position);
+//             int carIDD = clickedCar.getId();
+//             String passInfo = Integer.toString(carIDD);
+//             Intent openedCar = new Intent(MainActivity.this, openedCar.class);
+//             //Toast.makeText(MainActivity.this, "" + passInfo, Toast.LENGTH_SHORT).show();
+//             openedCar.putExtra("passId", passInfo);
+//             startActivity(openedCar);
+//            }
+//        });
     }
 
 
