@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder> {
+public class expensesAdapter extends RecyclerView.Adapter<expensesAdapter.ViewHolder> {
     Context context;
     List<classCarModel> contactsList;
     RecyclerView rvPrograms;
@@ -35,7 +35,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         }
     }
 
-    public ContactsAdapter(Context context, List<classCarModel> contactsList, RecyclerView rvPrograms){
+    public expensesAdapter(Context context, List<classCarModel> contactsList, RecyclerView rvPrograms){
         this.context = context;
         this.contactsList = contactsList;
         this.rvPrograms = rvPrograms;
@@ -43,7 +43,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
 
     @NonNull
     @Override
-    public ContactsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public expensesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.single_item, viewGroup, false);
         view.setOnClickListener(onClickListener);
@@ -52,7 +52,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ContactsAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull expensesAdapter.ViewHolder viewHolder, int i) {
         classCarModel contact = contactsList.get(i);
         viewHolder.imgView.setImageURI(Uri.parse(contact.getImagepath()));
         viewHolder.rowId.setText(Integer.toString(contact.getYear()));
