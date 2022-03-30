@@ -1,18 +1,12 @@
 package com.example.cw;
 
-import static android.location.LocationManager.GPS_PROVIDER;
-
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,13 +15,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.CountDownTimer;
-import android.provider.ContactsContract;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     Button button;
 
     RecyclerView rvPrograms;
-    ContactsAdapter contactsAdapter;
+    expensesAdapter expensesAdapter;
     RecyclerView.LayoutManager layoutManager;
     List<classCarModel> contactsList = new ArrayList<>();
 
@@ -76,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         rvPrograms.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(MainActivity.this);
         rvPrograms.setLayoutManager(layoutManager);
-        contactsAdapter = new ContactsAdapter(MainActivity.this, allCars, rvPrograms);
-        rvPrograms.setAdapter(contactsAdapter);
+        expensesAdapter = new expensesAdapter(MainActivity.this, allCars, rvPrograms);
+        rvPrograms.setAdapter(expensesAdapter);
 
 
         //SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
