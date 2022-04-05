@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override public void onItemClick(View view, int position) {
 
                         Integer id = allCars.get(position).getId();
-                        Toast.makeText(MainActivity.this, ""+id, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, ""+id, Toast.LENGTH_SHORT).show();
                         Intent openedCar = new Intent(MainActivity.this, openedCar.class);
                         position++;
                         //Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();

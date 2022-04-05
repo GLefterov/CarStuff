@@ -141,7 +141,7 @@ public class openedCar extends AppCompatActivity {
         DataBaseHelper dataBaseHelper = new DataBaseHelper(openedCar.this);
 
         classCarModel currentCar = dataBaseHelper.searchOne(Search);
-        Toast.makeText(this, ""+currentCar, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, ""+currentCar, Toast.LENGTH_SHORT).show();
 
 
         TextView tv_carMake = findViewById(R.id.tv_carMake);
@@ -278,7 +278,7 @@ public class openedCar extends AppCompatActivity {
         floatingAddMOT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(openedCar.this, "You clicked on addmot", Toast.LENGTH_LONG).show();
+                //Toast.makeText(openedCar.this, "You clicked on addmot", Toast.LENGTH_LONG).show();
                 AlertDialog.Builder builder = new AlertDialog.Builder(openedCar.this);
                 builder.setTitle("Add MOT");
 
@@ -313,7 +313,7 @@ public class openedCar extends AppCompatActivity {
         floatingAddExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(openedCar.this, "You clicked on Expense", Toast.LENGTH_LONG).show();
+                //Toast.makeText(openedCar.this, "You clicked on Expense", Toast.LENGTH_LONG).show();
                 Intent addExpense = new Intent(openedCar.this, addExpense.class);
                 //Toast.makeText(MainActivity.this, "" + passInfo, Toast.LENGTH_SHORT).show();
                 addExpense.putExtra("passId", currentCar.getId());
@@ -330,14 +330,14 @@ public class openedCar extends AppCompatActivity {
                 String latStr = String.valueOf(lat);
                 classCarModel carModel = new classCarModel(currentCar.getId(), currentCar.getMake(), currentCar.getModel(), currentCar.getPrice(), currentCar.getYear(), lonStr, latStr, currentCar.getMOT(), currentCar.getInsurance(), currentCar.getImagepath());
                 dataBaseHelper2.addGPS(carModel);
-                Toast.makeText(openedCar.this, "GPS added successfully! lon: " + lon + " lat: " + lat, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(openedCar.this, "GPS added successfully! lon: " + lon + " lat: " + lat, Toast.LENGTH_SHORT).show();
             }
         });
         floatingAddInsurance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(openedCar.this, "You clicked on Insurance", Toast.LENGTH_LONG).show();
+                //Toast.makeText(openedCar.this, "You clicked on Insurance", Toast.LENGTH_LONG).show();
                 AlertDialog.Builder builder = new AlertDialog.Builder(openedCar.this);
                 builder.setTitle("Add insurance");
 
@@ -415,12 +415,12 @@ public class openedCar extends AppCompatActivity {
                 if(stringLon == null || stringLon == null || Double.parseDouble(stringLon) == 0.0 || Double.parseDouble(stringLat) == 0 ){
                     searchLon = currentCar.getLongitude();
                     searchLat = currentCar.getLatitude();
-                    Toast.makeText(openedCar.this, "1!!! GPS located! lon: " + searchLon + " lat: " + searchLat, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(openedCar.this, "1!!! GPS located! lon: " + searchLon + " lat: " + searchLat, Toast.LENGTH_SHORT).show();
                     String geoUri = "http://maps.google.com/maps?q=loc:" + searchLon + "," + searchLat;
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri ));
                     startActivity(intent);
                 }else {
-                    Toast.makeText(openedCar.this, "2!!! GPS located! lon: " + stringLat + " lat: " + stringLon, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(openedCar.this, "2!!! GPS located! lon: " + stringLat + " lat: " + stringLon, Toast.LENGTH_SHORT).show();
                     String geoUri = "http://maps.google.com/maps?q=loc:" + stringLat + ", " + stringLon;
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
                     startActivity(intent);

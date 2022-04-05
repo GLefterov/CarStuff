@@ -82,7 +82,7 @@ btnImage = findViewById(R.id.btn_addImage);
                 classCarModel carModel1;
                 try{
                     String path = selImage.toString();
-                    Toast.makeText(addNewCar.this, ""+path, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(addNewCar.this, ""+path, Toast.LENGTH_SHORT).show();
                     carModel1 = new classCarModel(-1, carMake.getText().toString(), carModel.getText().toString(), Integer.parseInt(carYear.getText().toString()), Integer.parseInt(carPrice.getText().toString()), "", "", carMOT.getText().toString(), carInsurance.getText().toString(), path);
 
                     //Toast.makeText(addNewCar.this, carModel1.toString(), Toast.LENGTH_SHORT).show();
@@ -94,7 +94,7 @@ btnImage = findViewById(R.id.btn_addImage);
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(addNewCar.this);
                 boolean success = dataBaseHelper.addOne(carModel1);
 
-                Toast.makeText(addNewCar.this, "Success= " + success, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(addNewCar.this, "Success= " + success, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -127,7 +127,7 @@ btnImage = findViewById(R.id.btn_addImage);
             File finalFile = new File(getRealPathFromURI(selectedImage));
             carPic.setImageURI(selImage);
 
-            Toast.makeText(this, ""+Uri.fromFile(finalFile), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, ""+Uri.fromFile(finalFile), Toast.LENGTH_SHORT).show();
         }
     }
 }

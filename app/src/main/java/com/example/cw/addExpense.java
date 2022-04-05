@@ -57,7 +57,7 @@ public class addExpense extends AppCompatActivity {
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(addExpense.this);
                 boolean success = dataBaseHelper.addExpense(expenseModel1, Integer.toString(Search));
 
-                Toast.makeText(addExpense.this, "Success= " + success, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(addExpense.this, "Success= " + success, Toast.LENGTH_SHORT).show();
 
             }
 

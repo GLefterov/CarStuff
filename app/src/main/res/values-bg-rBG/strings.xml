@@ -11,8 +11,8 @@
     <string name="carPrice">Цена</string>
     <string name="carYear">Година на производство</string>
     <string name="carModel">Модел</string>
-    <string name="insuranceDate">Изтичаща гражданска дата</string>
-    <string name="MOTend">Изтичащ преглед дата</string>
+    <string name="insuranceDate">Изтичаща гражданска</string>
+    <string name="MOTend">Изтичащ преглед</string>
     <string name="addCar">Добави</string>
     <string name="cancel">Откажи</string>
     <string name="back">Назад</string>
@@ -27,4 +27,7 @@
     <string name="a" />
     <string name="savelocation">Запази локация</string>
     <string name="important">"Внимание! Има автомобил с изтичащ срок:  "</string>
+    <string name="addImage">Добави пик</string>
+    <string name="amountmoney">Въведи количество разход</string>
+    <string name="expenseText">Въведи причина за разход</string>
 </resources>
